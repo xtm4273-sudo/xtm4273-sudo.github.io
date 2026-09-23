@@ -389,6 +389,44 @@ p { margin: 0; }
   .hero-cta .btn { width: 100%; text-align: center; }
 }
 
+/* ── Device Toggle (mobile simulation on PC) ── */
+.device-btn {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.3rem; cursor: pointer; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center; gap: 0.25rem;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: var(--fm); font-size: 0.6875rem; letter-spacing: 0.03em;
+}
+.device-btn:hover { color: var(--text-strong); border-color: var(--text-muted); }
+.device-btn .ic-phone { display: none; }
+.device-btn .ic-pc { display: block; }
+html.mobile-sim .device-btn .ic-phone { display: block; }
+html.mobile-sim .device-btn .ic-pc { display: none; }
+
+html.mobile-sim body {
+  max-width: 420px;
+  margin: 0 auto;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  min-height: 100vh;
+}
+html.mobile-sim .container { padding-inline: 20px; }
+html.mobile-sim .section { padding-block: 3.5rem; }
+html.mobile-sim .section-title { font-size: 1.5rem; margin-bottom: 2rem; }
+html.mobile-sim .nav { max-width: 420px; left: 50%; transform: translateX(-50%); }
+html.mobile-sim .hero { padding: 7rem 0 4rem; min-height: 65vh; }
+html.mobile-sim .hero-name { font-size: 2.25rem; }
+html.mobile-sim .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+html.mobile-sim .about-intro { flex-direction: column; align-items: center; text-align: center; }
+html.mobile-sim .about-photo { width: 120px; height: 120px; }
+html.mobile-sim .stat { min-width: calc(50% - 0.5rem); }
+html.mobile-sim .proj { padding: 1.5rem; }
+html.mobile-sim .exp-item { padding: 1.5rem; }
+html.mobile-sim .exp-header { flex-direction: column; gap: 0.25rem; }
+html.mobile-sim .sk-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+html.mobile-sim .hero-cta { flex-direction: column; }
+html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
+
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -410,6 +448,10 @@ p { margin: 0; }
       <a href="#projects">项目</a>
       <a href="#skills">技能</a>
       <a href="#contact">联系</a>
+      <button class="device-btn" id="deviceBtn" aria-label="切换设备视图">
+        <svg class="ic-phone" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="1" width="8" height="14" rx="2"/><line x1="7" y1="12" x2="9" y2="12"/></svg>
+        <svg class="ic-pc" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="2" width="14" height="10" rx="1.5"/><line x1="5" y1="14" x2="11" y2="14"/><line x1="8" y1="12" x2="8" y2="14"/></svg>
+      </button>
       <button class="theme-btn" id="themeBtn" aria-label="切换主题">
         <svg class="ic-sun" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1.5" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="14.5"/><line x1="1.5" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="14.5" y2="8"/><line x1="3.4" y1="3.4" x2="4.5" y2="4.5"/><line x1="11.5" y1="11.5" x2="12.6" y2="12.6"/><line x1="3.4" y1="12.6" x2="4.5" y2="11.5"/><line x1="11.5" y1="4.5" x2="12.6" y2="3.4"/></svg>
         <svg class="ic-moon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 8.5a6 6 0 0 1-6-6A6 6 0 1 0 13.5 8.5z"/></svg>
@@ -654,6 +696,20 @@ p { margin: 0; }
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var dots = [], raf;
 
+  // Device toggle: auto-detect + manual switch
+  var deviceBtn = document.getElementById('deviceBtn');
+  var isMobileDevice = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobileDevice) {
+    root.classList.add('mobile-sim');
+  }
+  try { var dv = localStorage.getItem('device-view'); if(dv === 'mobile') root.classList.add('mobile-sim'); else if(dv === 'pc') root.classList.remove('mobile-sim'); } catch(e){}
+  deviceBtn.addEventListener('click', function(){
+    var isMobile = root.classList.toggle('mobile-sim');
+    try { localStorage.setItem('device-view', isMobile ? 'mobile' : 'pc'); } catch(e){}
+    setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 100);
+  });
+
+  // Theme
   try { var sv = localStorage.getItem('theme'); if(sv) root.setAttribute('data-theme', sv); } catch(e){}
   themeBtn.addEventListener('click', function(){
     var attr = root.getAttribute('data-theme');
