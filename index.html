@@ -969,7 +969,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
   var chatMsgs = document.getElementById('chatMsgs');
   var chatInput = document.getElementById('chatInput');
   var chatSend = document.getElementById('chatSend');
-  var chatSessionId = crypto.randomUUID();
+  var chatSessionId = (crypto.randomUUID ? crypto.randomUUID() : 's-' + Date.now() + '-' + Math.random().toString(36).slice(2));
   var isSending = false;
 
   function openChat() {
@@ -994,6 +994,19 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     return d;
   }
 
+  function parseSSE(text) {
+    var answer = '';
+    var lines = text.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      if (!lines[i].startsWith('data: ')) continue;
+      try {
+        var p = JSON.parse(lines[i].slice(6));
+        if (p.type === 'answer' && p.content && p.content.answer) answer += p.content.answer;
+      } catch(e) {}
+    }
+    return answer;
+  }
+
   async function sendMessage() {
     var msg = chatInput.value.trim();
     if (!msg || isSending) return;
@@ -1010,31 +1023,45 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg, session_id: chatSessionId })
       });
-      var reader = res.body.getReader();
-      var decoder = new TextDecoder();
-      var buffer = '';
 
-      while (true) {
-        var chunk = await reader.read();
-        if (chunk.done) break;
-        buffer += decoder.decode(chunk.value, { stream: true });
-        var lines = buffer.split('\n');
-        buffer = lines.pop();
-        for (var li = 0; li < lines.length; li++) {
-          var line = lines[li];
-          if (!line.startsWith('data: ')) continue;
-          try {
-            var payload = JSON.parse(line.slice(6));
-            if (payload.type === 'answer' && payload.content && payload.content.answer) {
-              answer += payload.content.answer;
-              botEl.textContent = answer;
-              botEl.className = 'chat-msg bot';
-              chatMsgs.scrollTop = chatMsgs.scrollHeight;
-            }
-          } catch(pe) {}
+      var canStream = false;
+      try { canStream = res.body && typeof res.body.getReader === 'function'; } catch(e) {}
+
+      if (canStream) {
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var buffer = '';
+        while (true) {
+          var chunk = await reader.read();
+          if (chunk.done) break;
+          buffer += decoder.decode(chunk.value, { stream: true });
+          var lines = buffer.split('\n');
+          buffer = lines.pop();
+          for (var li = 0; li < lines.length; li++) {
+            if (!lines[li].startsWith('data: ')) continue;
+            try {
+              var payload = JSON.parse(lines[li].slice(6));
+              if (payload.type === 'answer' && payload.content && payload.content.answer) {
+                answer += payload.content.answer;
+                botEl.textContent = answer;
+                botEl.className = 'chat-msg bot';
+                chatMsgs.scrollTop = chatMsgs.scrollHeight;
+              }
+            } catch(pe) {}
+          }
         }
+      } else {
+        var text = await res.text();
+        answer = parseSSE(text);
       }
-      if (!answer) { botEl.textContent = '抱歉，没有收到回复，请重试~'; botEl.className = 'chat-msg bot'; }
+
+      if (answer) {
+        botEl.textContent = answer;
+        botEl.className = 'chat-msg bot';
+      } else {
+        botEl.textContent = '抱歉，没有收到回复，请重试~';
+        botEl.className = 'chat-msg bot';
+      }
     } catch(err) {
       botEl.textContent = '网络出了点问题，请稍后重试~';
       botEl.className = 'chat-msg bot';
@@ -1042,6 +1069,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     isSending = false;
     chatSend.disabled = false;
     chatInput.focus();
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
   }
 
   chatSend.addEventListener('click', sendMessage);
