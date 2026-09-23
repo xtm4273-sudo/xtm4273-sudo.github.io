@@ -696,18 +696,19 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var dots = [], raf;
 
-  // Device toggle: auto-detect + manual switch
+  // Device toggle: only for PC users to preview mobile layout
   var deviceBtn = document.getElementById('deviceBtn');
-  var isMobileDevice = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  if (isMobileDevice) {
-    root.classList.add('mobile-sim');
+  var isRealMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isRealMobile) {
+    deviceBtn.style.display = 'none';
+  } else {
+    try { var dv = localStorage.getItem('device-view'); if(dv === 'mobile') root.classList.add('mobile-sim'); } catch(e){}
+    deviceBtn.addEventListener('click', function(){
+      var isMobile = root.classList.toggle('mobile-sim');
+      try { localStorage.setItem('device-view', isMobile ? 'mobile' : 'pc'); } catch(e){}
+      setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 100);
+    });
   }
-  try { var dv = localStorage.getItem('device-view'); if(dv === 'mobile') root.classList.add('mobile-sim'); else if(dv === 'pc') root.classList.remove('mobile-sim'); } catch(e){}
-  deviceBtn.addEventListener('click', function(){
-    var isMobile = root.classList.toggle('mobile-sim');
-    try { localStorage.setItem('device-view', isMobile ? 'mobile' : 'pc'); } catch(e){}
-    setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 100);
-  });
 
   // Theme
   try { var sv = localStorage.getItem('theme'); if(sv) root.setAttribute('data-theme', sv); } catch(e){}
