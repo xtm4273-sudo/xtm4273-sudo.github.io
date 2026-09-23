@@ -427,6 +427,119 @@ html.mobile-sim .sk-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 html.mobile-sim .hero-cta { flex-direction: column; }
 html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 
+/* ── Cat Agent ── */
+.cat-agent {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  cursor: pointer; user-select: none;
+}
+.cat-body {
+  width: 64px; height: 64px; position: relative;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+  transition: transform 0.2s;
+}
+.cat-agent:hover .cat-body { transform: scale(1.1); }
+@media (prefers-reduced-motion: no-preference) {
+  .cat-body { animation: cat-float 3s ease-in-out infinite; }
+}
+@keyframes cat-float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.cat-agent:hover .cat-body { animation: none; transform: scale(1.1); }
+.cat-bubble {
+  position: absolute; bottom: 100%; right: 0; margin-bottom: 8px;
+  background: var(--gold); color: #0A0D14; font-size: 0.75rem; font-weight: 600;
+  padding: 0.35rem 0.75rem; border-radius: 10px; white-space: nowrap;
+  opacity: 0; transform: translateY(4px); transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.cat-bubble::after {
+  content: ''; position: absolute; bottom: -5px; right: 18px;
+  border-left: 6px solid transparent; border-right: 6px solid transparent;
+  border-top: 6px solid var(--gold);
+}
+.cat-agent:hover .cat-bubble { opacity: 1; transform: translateY(0); }
+.cat-agent.chat-open { display: none; }
+
+/* ── Chat Panel ── */
+.chat-panel {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  width: 380px; max-width: calc(100vw - 32px);
+  height: 520px; max-height: calc(100vh - 80px);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; display: flex; flex-direction: column;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+  transform: translateY(20px) scale(0.95); opacity: 0;
+  pointer-events: none; transition: transform 0.3s, opacity 0.3s;
+}
+.chat-panel.open {
+  transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;
+}
+.chat-head {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.chat-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gold-dim); display: flex; align-items: center;
+  justify-content: center; font-size: 1.25rem; flex-shrink: 0;
+}
+.chat-head-info { flex: 1; }
+.chat-head-name {
+  font-family: var(--fd); font-size: 0.9375rem; font-weight: 600; color: var(--text-strong);
+}
+.chat-head-status { font-size: 0.6875rem; color: var(--text-muted); }
+.chat-close {
+  background: none; border: none; color: var(--text-muted); cursor: pointer;
+  padding: 4px; border-radius: 6px; transition: color 0.2s;
+}
+.chat-close:hover { color: var(--text-strong); }
+.chat-msgs {
+  flex: 1; overflow-y: auto; padding: 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.chat-msg {
+  max-width: 85%; padding: 0.625rem 0.875rem;
+  border-radius: 12px; font-size: 0.875rem; line-height: 1.6;
+  word-break: break-word;
+}
+.chat-msg.bot {
+  align-self: flex-start; background: var(--surface-alt);
+  border: 1px solid var(--border); color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+.chat-msg.user {
+  align-self: flex-end; background: var(--gold);
+  color: #0A0D14; border-bottom-right-radius: 4px;
+}
+.chat-msg.typing { color: var(--text-muted); font-style: italic; }
+.chat-input-bar {
+  display: flex; gap: 0.5rem; padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border); flex-shrink: 0;
+}
+.chat-input {
+  flex: 1; background: var(--surface-alt); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.875rem;
+  color: var(--text); font-family: var(--fb); outline: none;
+  transition: border-color 0.2s;
+}
+.chat-input:focus { border-color: var(--gold); }
+.chat-input::placeholder { color: var(--text-muted); }
+.chat-send {
+  background: var(--gold); border: none; border-radius: 8px;
+  padding: 0.5rem 0.875rem; cursor: pointer; color: #0A0D14;
+  font-weight: 600; font-size: 0.8125rem; transition: filter 0.2s;
+  white-space: nowrap;
+}
+.chat-send:hover { filter: brightness(1.1); }
+.chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+@media (max-width: 480px) {
+  .chat-panel { bottom: 0; right: 0; width: 100%; max-width: 100%;
+    height: 100vh; max-height: 100vh; border-radius: 0; }
+  .cat-agent { bottom: 20px; right: 20px; }
+}
+
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -678,6 +791,53 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 
 </main>
 
+<!-- ════ Cat Agent ════ -->
+<div class="cat-agent" id="catAgent" role="button" aria-label="和数字分身聊天" tabindex="0">
+  <div class="cat-bubble">和我聊聊~</div>
+  <svg class="cat-body" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22 38 L30 12 L42 32 Z" fill="var(--gold)"/>
+    <path d="M78 38 L70 12 L58 32 Z" fill="var(--gold)"/>
+    <path d="M25 38 L32 16 L42 34 Z" fill="var(--surface-alt)" stroke="var(--gold)" stroke-width="1"/>
+    <path d="M75 38 L68 16 L58 34 Z" fill="var(--surface-alt)" stroke="var(--gold)" stroke-width="1"/>
+    <ellipse cx="50" cy="58" rx="30" ry="28" fill="var(--gold)"/>
+    <ellipse cx="50" cy="60" rx="27" ry="24" fill="var(--surface)"/>
+    <ellipse cx="50" cy="58" rx="28" ry="26" fill="var(--gold)" opacity="0.9"/>
+    <ellipse cx="40" cy="52" rx="5" ry="5.5" fill="var(--surface)"/>
+    <ellipse cx="60" cy="52" rx="5" ry="5.5" fill="var(--surface)"/>
+    <ellipse cx="41" cy="53" rx="2.8" ry="3.2" fill="#0A0D14"/>
+    <ellipse cx="61" cy="53" rx="2.8" ry="3.2" fill="#0A0D14"/>
+    <circle cx="39" cy="51" r="1.2" fill="white"/>
+    <circle cx="59" cy="51" r="1.2" fill="white"/>
+    <ellipse cx="50" cy="61" rx="2" ry="1.2" fill="#F28B82"/>
+    <path d="M47 63 Q50 67 53 63" stroke="#0A0D14" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <line x1="22" y1="56" x2="35" y2="58" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="22" y1="60" x2="35" y2="60" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="65" y1="58" x2="78" y2="56" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="65" y1="60" x2="78" y2="60" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
+    <path d="M40 82 Q50 90 60 82" stroke="var(--gold)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="chat-avatar">🐱</div>
+    <div class="chat-head-info">
+      <div class="chat-head-name">小甜的数字分身</div>
+      <div class="chat-head-status">AI Agent · 在线</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="关闭">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="4" x2="14" y2="14"/><line x1="14" y1="4" x2="4" y2="14"/></svg>
+    </button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="chat-msg bot">你好~ 我是小甜的数字分身 🐱 想了解我的项目经验、技能或者聊聊 AI 产品？随便问！</div>
+  </div>
+  <div class="chat-input-bar">
+    <input class="chat-input" id="chatInput" type="text" placeholder="输入消息..." autocomplete="off">
+    <button class="chat-send" id="chatSend">发送</button>
+  </div>
+</div>
+
 <footer class="foot">
   <div class="container">
     <p>&copy; 2026 马晓甜 · AI产品经理</p>
@@ -800,5 +960,91 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     clearTimeout(rTimer);
     rTimer = setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 200);
   });
+
+  // ── Chat Agent ──
+  var WORKER_URL = 'https://coze-proxy.xtm4273.workers.dev/';
+  var catAgent = document.getElementById('catAgent');
+  var chatPanel = document.getElementById('chatPanel');
+  var chatClose = document.getElementById('chatClose');
+  var chatMsgs = document.getElementById('chatMsgs');
+  var chatInput = document.getElementById('chatInput');
+  var chatSend = document.getElementById('chatSend');
+  var chatSessionId = crypto.randomUUID();
+  var isSending = false;
+
+  function openChat() {
+    chatPanel.classList.add('open');
+    catAgent.classList.add('chat-open');
+    chatInput.focus();
+  }
+  function closeChat() {
+    chatPanel.classList.remove('open');
+    catAgent.classList.remove('chat-open');
+  }
+  catAgent.addEventListener('click', openChat);
+  catAgent.addEventListener('keydown', function(e){ if(e.key==='Enter') openChat(); });
+  chatClose.addEventListener('click', closeChat);
+
+  function addMsg(text, who) {
+    var d = document.createElement('div');
+    d.className = 'chat-msg ' + who;
+    d.textContent = text;
+    chatMsgs.appendChild(d);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    return d;
+  }
+
+  async function sendMessage() {
+    var msg = chatInput.value.trim();
+    if (!msg || isSending) return;
+    isSending = true;
+    chatSend.disabled = true;
+    chatInput.value = '';
+    addMsg(msg, 'user');
+    var botEl = addMsg('思考中...', 'bot typing');
+    var answer = '';
+
+    try {
+      var res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, session_id: chatSessionId })
+      });
+      var reader = res.body.getReader();
+      var decoder = new TextDecoder();
+      var buffer = '';
+
+      while (true) {
+        var chunk = await reader.read();
+        if (chunk.done) break;
+        buffer += decoder.decode(chunk.value, { stream: true });
+        var lines = buffer.split('\n');
+        buffer = lines.pop();
+        for (var li = 0; li < lines.length; li++) {
+          var line = lines[li];
+          if (!line.startsWith('data: ')) continue;
+          try {
+            var payload = JSON.parse(line.slice(6));
+            if (payload.type === 'answer' && payload.content && payload.content.answer) {
+              answer += payload.content.answer;
+              botEl.textContent = answer;
+              botEl.className = 'chat-msg bot';
+              chatMsgs.scrollTop = chatMsgs.scrollHeight;
+            }
+          } catch(pe) {}
+        }
+      }
+      if (!answer) { botEl.textContent = '抱歉，没有收到回复，请重试~'; botEl.className = 'chat-msg bot'; }
+    } catch(err) {
+      botEl.textContent = '网络出了点问题，请稍后重试~';
+      botEl.className = 'chat-msg bot';
+    }
+    isSending = false;
+    chatSend.disabled = false;
+    chatInput.focus();
+  }
+
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', function(e){ if(e.key==='Enter') sendMessage(); });
 })();
 </script>
