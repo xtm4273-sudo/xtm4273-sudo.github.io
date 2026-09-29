@@ -17,12 +17,9 @@ html { scroll-padding-top:80px; }
 .hero { min-height:780px; height:100svh; max-height:1200px; padding:0; align-items:flex-end; isolation:isolate; background:var(--hero-ink); color:var(--hero-text);  }
 .hero-media,.hero-shade { position:absolute; inset:0; z-index:-2; pointer-events:none; }
 .hero-media { overflow:hidden; }
-.hero-media img,.hero-media video { position:absolute; width:100%; height:100%; object-fit:contain; object-position:center; }
+.hero-media img,.hero-media video,.hero-media canvas { position:absolute; width:100%; height:100%; object-fit:contain; object-position:center; }
 .hero-media video { opacity:0; transition:opacity .25s; }
 .hero[data-media="ready"] video { opacity:1; }
-.hero-play { position:absolute; z-index:2; top:40%; right:22%; min-height:44px; padding:12px 18px; border:1px solid var(--hero-line); border-radius:4px; background:rgba(16,15,13,.85); color:var(--hero-text); font:14px var(--fb); cursor:pointer; }
-.hero-play:hover { background:var(--hero-ink); border-color:var(--hero-accent); }
-.hero-play span { margin-left:10px; }
 .hero-shade { z-index:-1; background:linear-gradient(90deg,rgba(10,10,9,.86) 0%,rgba(10,10,9,.65) 24%,rgba(10,10,9,.05) 62%),linear-gradient(0deg,rgba(10,10,9,.94),rgba(10,10,9,.05) 39%,transparent 70%,rgba(10,10,9,.28)); }
 .hero-topline { position:absolute; top:114px; left:4.5%; right:4.5%; display:flex; justify-content:space-between; font:11px var(--fm); letter-spacing:.15em; color:var(--hero-muted); }
 .hero-content.container { width:100%; max-width:none; margin:0; padding:0 4.5% 175px; pointer-events:none; }
@@ -52,8 +49,7 @@ html { scroll-padding-top:80px; }
   .nav:not(.scrolled) .nav-links.open { background:var(--hero-ink); }
   .hero { min-height:760px; max-height:none; }
   .hero-topline { top:93px; left:24px; right:24px; font-size:9px; }
-  .hero-media img,.hero-media video { object-position:center; height:auto; top:90px; }
-  .hero-play { top:calc(90px + 28.125vw); right:50%; transform:translate(50%,-50%); }
+  .hero-media img,.hero-media video,.hero-media canvas { object-position:center; height:auto; top:90px; }
   .hero-shade { background:linear-gradient(0deg,#100f0d 12%,rgba(16,15,13,.97) 29%,rgba(16,15,13,.15) 43%,rgba(16,15,13,0) 66%,rgba(16,15,13,.15)); }
   .hero-content.container { padding:0 24px 160px; }
   .hero-eyebrow { font-size:10px; margin-bottom:12px; }
