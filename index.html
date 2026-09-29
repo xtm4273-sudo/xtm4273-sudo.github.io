@@ -557,7 +557,8 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 }
 </style>
 
-<link rel="stylesheet" href="assets/hero.css">
+<link rel="stylesheet" href="assets/hero.css?v=mobile3">
+<script src="assets/hero.js?v=mobile3" defer></script>
 <link rel="stylesheet" href="assets/projects.css">
 <link rel="preload" as="image" href="assets/ip-home-v2-poster.jpg">
 </head>
@@ -566,7 +567,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <!-- ════ Nav ════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner container">
-    <a class="nav-logo" href="#hero" aria-label="马晓甜，返回首页"><svg class="nav-ip" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><span class="brand-word">马晓甜<small>PRODUCT &amp; POSSIBILITY</small></span></a>
+    <a class="nav-logo" href="#hero" aria-label="马晓甜，返回首页"><svg class="nav-ip" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><span class="brand-word">马晓甜<small>PRODUCT &amp; POSSIBILITY</small></span></a>
     <div class="nav-links" id="navLinks">
       <a href="#about">关于</a>
       <a href="#experience">经历</a>
@@ -593,11 +594,12 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <section class="hero" id="hero" aria-label="马晓甜的个人动画首页" data-media="loading">
   <div class="hero-media" aria-hidden="true">
     <img class="hero-poster" src="assets/ip-home-v2-poster.jpg" alt="" fetchpriority="high" width="1280" height="720">
-    <video id="ip-video" autoplay loop muted playsinline preload="auto" poster="assets/ip-home-v2-poster.jpg" disablepictureinpicture tabindex="-1">
-      <source src="assets/ip-home-v2.mp4" type="video/mp4">
+    <video id="ip-video" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="assets/ip-home-v2-poster.jpg" data-mobile-src="assets/ip-home-mobile-v3.mp4" data-desktop-src="assets/ip-home-desktop-v3.mp4" disablepictureinpicture tabindex="-1">
+      <source type="video/mp4">
     </video>
   </div>
   <div class="hero-shade" aria-hidden="true"></div>
+  <button id="hero-play" class="hero-play" type="button" hidden aria-label="播放首页动画">播放动画 <span aria-hidden="true">▷</span></button>
   <div class="hero-topline"><span>THE WORLD OF XIAOTIAN</span></div>
   <div class="hero-content container">
     <p class="hero-eyebrow"><span></span> AI PRODUCT MANAGER</p>
@@ -645,7 +647,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
         <div class="stat"><span class="stat-num">10+</span><span class="stat-lab">内外部分享</span></div>
       </div>
     </div>
-<div class="ip-note"><svg class="ip-chapter-art" viewBox="1225 862 173 230" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p><small>A LITTLE ABOUT ME</small>保持好奇，也把每个想法认真落地。</p></div>
+<div class="ip-note"><svg class="ip-chapter-art" viewBox="1225 862 173 230" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p><small>A LITTLE ABOUT ME</small>保持好奇，也把每个想法认真落地。</p></div>
   </div>
 </section>
 
@@ -770,7 +772,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <section class="section" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <svg class="contact-ip" viewBox="1595 850 185 235" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p class="section-label">联系我</p>
+      <svg class="contact-ip" viewBox="1595 850 185 235" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p class="section-label">联系我</p>
       <h2 class="section-title">聊聊AI产品的下一步</h2>
       <p>目前正在寻找AI产品经理的机会，期待加入一个有技术深度、重视产品价值的团队。如果你的团队正在构建AI驱动的产品，欢迎联系我。</p>
       <div class="contact-row">
@@ -796,12 +798,12 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <!-- ════ Cat Agent ════ -->
 <div class="cat-agent" id="catAgent" role="button" aria-label="和数字分身聊天" tabindex="0">
   <div class="cat-bubble">和我聊聊~</div>
-  <svg class="persona-face" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg>
+  <svg class="persona-face" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg>
 </div>
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <div class="chat-avatar"><svg class="chat-persona" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg></div>
+    <div class="chat-avatar"><svg class="chat-persona" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg></div>
     <div class="chat-head-info">
       <div class="chat-head-name">小甜的数字分身</div>
       <div class="chat-head-status">AI Agent · 在线</div>
@@ -993,7 +995,6 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 })();
 </script>
 
-<script src="assets/hero.js" defer></script>
 <script src="assets/projects.js" defer></script>
 </body>
 </html>
