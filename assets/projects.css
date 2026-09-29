@@ -16,7 +16,7 @@
 .contact-ip { width:88px; height:108px; display:block; margin:0 auto 24px; border-radius:10px; }
 .folio-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:32px; }
 .folio-heading .section-title { margin:0; font-weight:600; }
-.folio-intro { font-size:13px; line-height:1.8; color:var(--text); max-width:270px; }
+.project-caption { margin:24px 0 0; font-size:14px; line-height:1.8; color:var(--text); text-align:left; }
 .project-accordion { display:flex; gap:14px; height:520px; }
 .project-card { position:relative; isolation:isolate; flex:1 1 0; min-width:0; overflow:hidden; border-radius:12px; background:#282722; color:#faf5e9; transition:flex-grow .3s ease; }
 .project-card.is-active { flex-grow:2.35; }

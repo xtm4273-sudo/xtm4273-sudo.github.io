@@ -1,0 +1,52 @@
+/* About: open editorial composition, original scene, soft image edges.
+   Existing ivory/ink/brass tokens; 8px spacing, no frames or added animation. */
+#about { scroll-margin-top:80px; padding-block:104px 88px; overflow:hidden; }
+#about .container { max-width:1280px; padding-inline:48px; }
+.about-story { display:grid; grid-template-columns:minmax(0, 0.9fr) minmax(0, 1.5fr); align-items:center; gap:40px; }
+.about-copy { position:relative; z-index:1; }
+#about .section-label { margin-bottom:24px; color:var(--text); font-size:12px; letter-spacing:.12em; }
+#about h2 { font-family:var(--fb); font-size:clamp(28px,2.5vw,38px); font-weight:600; line-height:1.5; letter-spacing:-.04em; text-wrap:initial; }
+.about-description { margin-top:28px; max-width:27em; font-size:16px; line-height:1.95; color:var(--text); }
+.about-description p + p { margin-top:16px; }
+.about-education { margin-top:28px; font-size:13px; line-height:1.9; color:var(--text); }
+.about-education p { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 12px; }
+.about-education strong { color:var(--text-strong); font-weight:600; }
+.about-scene { margin:0 -48px 0 -8px; }
+.about-scene img { display:block; width:100%; height:auto; border:0; border-radius:0; box-shadow:none;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 86%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 86%,transparent);
+  mask-composite:intersect;
+}
+.about-results { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; margin:64px 0 0; padding:0; }
+.about-results > div { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+.about-results dd { order:-1; margin:0; color:var(--gold); font:600 clamp(32px,3vw,44px)/1.2 var(--fd); font-variant-numeric:tabular-nums; letter-spacing:-.04em; }
+.about-results dd span { font-size:.58em; margin-left:3px; letter-spacing:0; }
+.about-results dt { color:var(--text); font-size:14px; line-height:1.6; }
+@media(min-width:761px) and (max-width:1050px) {
+  #about .container { padding-inline:32px; }
+  .about-story { grid-template-columns:1fr 1.2fr; gap:24px; }
+  .about-scene { margin-right:-32px; }
+  #about h2 { font-size:28px; }
+}
+@media(max-width:760px) {
+  #about { padding-block:64px; }
+  #about .container { padding-inline:24px; }
+  .about-story { grid-template-columns:1fr; gap:28px; }
+  #about .section-label { margin-bottom:20px; }
+  #about h2 { font-size:clamp(25px,6.7vw,34px); }
+  .about-description { margin-top:24px; max-width:34em; }
+  .about-education { margin-top:24px; }
+  .about-scene { margin:0 -24px; }
+  .about-results { grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px 12px; margin-top:32px; }
+  .about-results dd { font-size:32px; }
+  .about-results dt { font-size:12px; }
+}
+html.mobile-sim #about { padding-block:64px; }
+html.mobile-sim #about .container { padding-inline:24px; }
+html.mobile-sim .about-story { grid-template-columns:1fr; gap:28px; }
+html.mobile-sim #about h2 { font-size:28px; }
+html.mobile-sim .about-scene { margin:0 -24px; }
+html.mobile-sim .about-results { grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px 12px; margin-top:32px; }
+html.mobile-sim .about-results dd { font-size:32px; }
+html.mobile-sim .about-results dt { font-size:12px; }
