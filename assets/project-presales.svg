@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+<defs><linearGradient id="panel" x2="1" y2="1"><stop stop-color="#34362f"/><stop offset="1" stop-color="#171e1c"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-opacity=".3"/></filter></defs>
+<g transform="translate(54 74) rotate(-5 245 130)" filter="url(#shadow)"><rect width="492" height="268" rx="12" fill="url(#panel)" stroke="#c6b99f" stroke-opacity=".4"/>
+<path d="M0 35H492" stroke="#c6b99f" stroke-opacity=".15"/><g fill="#a8c1b0"><circle cx="18" cy="17" r="3"/><circle cx="30" cy="17" r="3" opacity=".5"/><circle cx="42" cy="17" r="3" opacity=".25"/></g>
+<g font-family="Microsoft YaHei, sans-serif" font-size="11" fill="#e5dfd2"><text x="68" y="22" font-size="10" fill="#a8c1b0">售前知识助手</text><rect x="16" y="51" width="122" height="198" rx="5" fill="#ffffff05"/>
+<text x="31" y="76">企业知识库</text><path d="M31 92h80M31 124h65M31 156h74M31 188h53" stroke="#a8c1b0" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+<rect x="175" y="56" width="286" height="40" rx="8" fill="#75958244"/><text x="193" y="81">这个场景适合什么解决方案？</text>
+<rect x="158" y="111" width="288" height="87" rx="8" fill="#ffffff0c"/><text x="176" y="135">从你的业务需求开始。</text><text x="176" y="160" fill="#aab8ad" font-size="10">需求澄清 → 知识检索 → 智能推荐</text><text x="176" y="182" fill="#d1b788" font-size="10">已关联知识来源 · 支持转人工</text>
+<rect x="158" y="215" width="303" height="28" rx="5" fill="#ffffff0a"/><text x="173" y="233" fill="#a1aca3" font-size="10">继续了解你的需求…</text><path d="m435 223 7 6-7 6" stroke="#d1b788" fill="none"/></g></g></svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+<defs><linearGradient id="panel" x2="1" y2="1"><stop stop-color="#34362f"/><stop offset="1" stop-color="#171e1c"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-opacity=".3"/></filter></defs>
+<g transform="translate(54 74) rotate(-5 245 130)" filter="url(#shadow)"><rect width="492" height="268" rx="12" fill="url(#panel)" stroke="#c6b99f" stroke-opacity=".4"/>
+<path d="M0 35H492" stroke="#c6b99f" stroke-opacity=".15"/><g fill="#cfb27a"><circle cx="18" cy="17" r="3"/><circle cx="30" cy="17" r="3" opacity=".5"/><circle cx="42" cy="17" r="3" opacity=".25"/></g>
+<g font-family="Microsoft YaHei, sans-serif" font-size="11" fill="#e5dfd2"><text x="68" y="22" font-size="10" fill="#ccb186">保险业务督导</text><rect x="16" y="51" width="83" height="199" rx="4" fill="#ffffff05"/>
+<text x="30" y="75">业务总览</text><text x="30" y="109" fill="#cfb27a">业绩问数</text><text x="30" y="143">签单分析</text><text x="30" y="177">利润分析</text><text x="30" y="211">客户洞察</text>
+<text x="120" y="71" font-size="15">让每一个业务问题，都有回应。</text><text x="120" y="93" fill="#969b8d" font-size="9">经营问数 / 业务归因 / 找客户</text>
+<rect x="119" y="110" width="350" height="89" rx="5" fill="#ffffff07" stroke="#c6b99f" stroke-opacity=".15"/>
+<path d="M133 177L182 163L220 170L266 136L310 147L356 128L400 135L453 117" stroke="#d5b477" fill="none" stroke-width="2"/>
+<path d="M133 190H454M133 161H454M133 132H454" stroke="#ffffff0c"/>
+<rect x="120" y="214" width="105" height="27" rx="4" fill="#cfb27a22"/><text x="132" y="232" fill="#e0c58b" font-size="10">一线业务员管理</text>
+<text x="247" y="232" fill="#a4ad9d" font-size="10">绩效 · 利润 · 签单 · 归因</text></g></g></svg>

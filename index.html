@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="马晓甜的个人网站：AI 产品经理，探索 AI 产品、项目实践与我的数字世界。">
 <title>马晓甜 · AI产品经理</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 
@@ -551,10 +557,16 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 }
 </style>
 
+<link rel="stylesheet" href="assets/hero.css">
+<link rel="stylesheet" href="assets/projects.css">
+<link rel="preload" as="image" href="assets/ip-home-v2-poster.jpg">
+</head>
+<body>
+<a class="skip-link" href="#about">跳到简历内容</a>
 <!-- ════ Nav ════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner container">
-    <a class="nav-logo" href="#">MXT</a>
+    <a class="nav-logo" href="#hero" aria-label="马晓甜，返回首页"><svg class="nav-ip" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><span class="brand-word">马晓甜<small>PRODUCT &amp; POSSIBILITY</small></span></a>
     <div class="nav-links" id="navLinks">
       <a href="#about">关于</a>
       <a href="#experience">经历</a>
@@ -578,24 +590,27 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 </nav>
 
 <!-- ════ Hero ════ -->
-<section class="hero" id="hero">
-  <canvas id="hero-cv"></canvas>
-  <div class="hero-glow"></div>
-  <div class="container hero-content">
-    <div class="hero-badge">
-      <span class="status-dot"></span>
-      <span>Open to Work · 无锡</span>
-    </div>
-    <p class="hero-eyebrow">AI Product Manager</p>
-    <h1 class="hero-name">马晓甜</h1>
-    <p class="hero-tagline">2年AI产品落地经验，主导百万级项目签约。懂技术、能对齐算法，在一线跟客户拿到真金白银结果的AI产品经理。</p>
+<section class="hero" id="hero" aria-label="马晓甜的个人动画首页" data-media="loading">
+  <div class="hero-media" aria-hidden="true">
+    <img class="hero-poster" src="assets/ip-home-v2-poster.jpg" alt="" fetchpriority="high" width="1280" height="720">
+    <video id="ip-video" autoplay loop muted playsinline preload="auto" poster="assets/ip-home-v2-poster.jpg" disablepictureinpicture tabindex="-1">
+      <source src="assets/ip-home-v2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-topline"><span>THE WORLD OF XIAOTIAN</span></div>
+  <div class="hero-content container">
+    <p class="hero-eyebrow"><span></span> AI PRODUCT MANAGER</p>
+    <h1 class="hero-name">马晓甜<span class="hero-roman">MA XIAOTIAN</span></h1>
+    <p class="hero-statement">把想象，<br>做成真实的产品。</p>
+    <p class="hero-tagline">懂技术，也懂人。<br>在真实的业务里，探索 AI 的更多可能。</p>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-gold">查看项目</a>
-      <a href="#contact" class="btn btn-ghost">联系我</a>
+      <a href="#projects" class="btn btn-gold">探索我的项目 <span aria-hidden="true">↗</span></a>
+      <a href="#contact" class="btn btn-ghost">与我聊聊 <span aria-hidden="true">↗</span></a>
     </div>
   </div>
-  <div class="scroll-hint">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,8 10,13 15,8"/></svg>
+  <div class="hero-bottom">
+    <a class="hero-scroll" href="#about"><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M8 1v18M2 13l6 6 6-6"/></svg><span>往下，认识我<span class="small-en">SCROLL TO DISCOVER</span></span></a>
   </div>
 </section>
 
@@ -630,6 +645,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
         <div class="stat"><span class="stat-num">10+</span><span class="stat-lab">内外部分享</span></div>
       </div>
     </div>
+<div class="ip-note"><svg class="ip-chapter-art" viewBox="1225 862 173 230" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p><small>A LITTLE ABOUT ME</small>保持好奇，也把每个想法认真落地。</p></div>
   </div>
 </section>
 
@@ -675,55 +691,41 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 </section>
 
 <!-- ════ Projects ════ -->
-<section class="section" id="projects">
-  <div class="container">
-    <p class="section-label">项目经历</p>
-    <h2 class="section-title">AI驱动的产品实战</h2>
-    <div class="proj-grid">
-
-      <article class="proj">
-        <p class="proj-role">AI产品设计 · 独立Owner</p>
-        <h3 class="proj-name">投资大模型助手</h3>
-        <p class="proj-tagline">面向集团CEO/董事长决策场景的百万级投资决策平台，可在线演示</p>
-        <ul class="proj-bullets">
-          <li>主导平台产品设计，覆盖投资测算、智能评审、运营监督三大模块，打通「机会研判→立项分析→尽调评估→专家评审→报告修订」全链路</li>
-          <li>面向CFO、CHO等高管访谈，将财务、法务、税务、风控判断转化为产品功能，形成依据可追溯、分歧可保留的决策材料</li>
-          <li>从0到1搭建可交互Demo与完整产品方案，作为百万级项目对外演示与签约推进的核心载体</li>
-        </ul>
-        <div class="proj-tags">
-          <span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">投资决策</span><span class="tag">Demo</span>
-        </div>
-      </article>
-
-      <article class="proj">
-        <p class="proj-role">产品抽象 · 方案沉淀</p>
-        <h3 class="proj-name">售前智能助手</h3>
-        <p class="proj-tagline">沉淀为可复用售前资产，服务POC与商机推进</p>
-        <ul class="proj-bullets">
-          <li>梳理售前咨询全流程（需求澄清→智能推荐→商机同步→转人工），设计知识库与智能检索方案</li>
-          <li>建立商机识别机制，自动整理客户需求、意向产品、对话摘要同步销售，支撑7×24小时在线咨询</li>
-        </ul>
-        <div class="proj-tags">
-          <span class="tag">知识库</span><span class="tag">智能检索</span><span class="tag">商机识别</span><span class="tag">7×24</span>
-        </div>
-      </article>
-
-      <article class="proj">
-        <p class="proj-role">产品落地 · Agent设计</p>
-        <h3 class="proj-name">排班智能助手</h3>
-        <p class="proj-tagline">将多约束排班规则转化为可解释的Agent工作流</p>
-        <ul class="proj-bullets">
-          <li>综合人员能力、区域、档期、工作负载多维度约束，设计批量预排+临时调整的产品方案</li>
-          <li>将复杂排班规则抽象为可执行Agent工作流，提供匹配分析、合理性校验与风险预警</li>
-        </ul>
-        <div class="proj-tags">
-          <span class="tag">Agent工作流</span><span class="tag">多约束优化</span><span class="tag">排班系统</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
+<section class="section" id="projects"><div class="container">
+  <p class="section-label">HIGH-VALUE SOLUTIONS · 高价值方案</p>
+  <div class="folio-heading"><h2 class="section-title">让 AI 走进真实业务。</h2><p class="folio-intro">四类高价值方案，<br>从客户需求，到场景演示与实施。</p></div>
+  <div class="project-accordion" aria-label="四类高价值方案"><article class="project-card is-active" data-project="investment">
+      <img class="project-cover" src="assets/project-investment.svg" width="600" height="400" alt="投资平台方案示意" loading="lazy">
+      <div class="project-kicker"><span>01 / SOLUTION</span><span class="project-year">方案示意</span></div>
+      <button class="project-select" type="button" aria-label="展开投资平台简介" aria-expanded="true" aria-controls="summary-investment"></button>
+      <div class="project-body"><p class="project-category">投资洞察 · 辅助决策</p><h3 class="project-title">投资平台</h3>
+      <p class="project-summary" id="summary-investment">为项目组建专属 AI 投资团队，串联机会发现、多专家评审与报告修订，让投前判断有依据、可追溯。</p>
+      <a class="project-open" href="projects/investment.html" aria-label="查看投资平台详情与 Demo"><span class="open-label">方案详情 &amp; Demo</span><span aria-hidden="true">↗</span></a></div>
+    </article><article class="project-card" data-project="scheduling">
+      <img class="project-cover" src="assets/project-scheduling.svg" width="600" height="400" alt="派单与排产方案示意" loading="lazy">
+      <div class="project-kicker"><span>02 / SOLUTION</span><span class="project-year">方案示意</span></div>
+      <button class="project-select" type="button" aria-label="展开派单与排产简介" aria-expanded="false" aria-controls="summary-scheduling"></button>
+      <div class="project-body"><p class="project-category">制造与零售 · 业务调度</p><h3 class="project-title">派单与排产</h3>
+      <p class="project-summary" id="summary-scheduling">覆盖排班、派单与排产类需求，可根据制造业、零售业的具体业务定制方案。</p>
+      <a class="project-open" href="projects/scheduling.html" aria-label="查看派单与排产详情与 Demo"><span class="open-label">方案详情 &amp; Demo</span><span aria-hidden="true">↗</span></a></div>
+    </article><article class="project-card" data-project="insurance">
+      <img class="project-cover" src="assets/project-insurance.svg" width="600" height="400" alt="保险问数与找客户方案示意" loading="lazy">
+      <div class="project-kicker"><span>03 / SOLUTION</span><span class="project-year">方案示意</span></div>
+      <button class="project-select" type="button" aria-label="展开保险问数与找客户简介" aria-expanded="false" aria-controls="summary-insurance"></button>
+      <div class="project-body"><p class="project-category">保险行业 · 经营分析</p><h3 class="project-title">保险问数与找客户</h3>
+      <p class="project-summary" id="summary-insurance">面向管理者、督导与代理人的 AI 经营协同助手，让经营问数连接客户定位、责任归因与任务跟进。</p>
+      <a class="project-open" href="projects/insurance.html" aria-label="查看保险问数与找客户详情与 Demo"><span class="open-label">方案详情 &amp; Demo</span><span aria-hidden="true">↗</span></a></div>
+    </article><article class="project-card" data-project="customer-service">
+      <img class="project-cover" src="assets/project-customer-service.svg" width="600" height="400" alt="智能客服方案示意" loading="lazy">
+      <div class="project-kicker"><span>04 / SOLUTION</span><span class="project-year">方案示意</span></div>
+      <button class="project-select" type="button" aria-label="展开智能客服简介" aria-expanded="false" aria-controls="summary-customer-service"></button>
+      <div class="project-body"><p class="project-category">售前咨询 · 内容营销</p><h3 class="project-title">智能客服</h3>
+      <p class="project-summary" id="summary-customer-service">联合吸管打造线上内容营销助手，理解客户需求、推荐产品与案例，将询价信息传递给销售团队。</p>
+      <a class="project-open" href="projects/customer-service.html" aria-label="查看智能客服详情与 Demo"><span class="open-label">方案详情 &amp; Demo</span><span aria-hidden="true">↗</span></a></div>
+    </article></div>
+  <div class="project-footer"><span class="folio-counter">04 SOLUTIONS / REAL-WORLD PRACTICE</span><span>需要客户展示或定制方案，欢迎联系我。</span></div>
+  <div class="solution-service-note"><span>需求沟通 / Demo / 方案 / 实施</span><p>可协助客户方案展示、AI 项目定制开发，以及 Dora、Wufan 等平台实施。</p><a href="#contact">聊聊你的需求 ↗</a></div>
+  </div></section>
 
 <!-- ════ Skills ════ -->
 <section class="section" id="skills">
@@ -768,7 +770,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <section class="section" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <p class="section-label">联系我</p>
+      <svg class="contact-ip" viewBox="1595 850 185 235" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p class="section-label">联系我</p>
       <h2 class="section-title">聊聊AI产品的下一步</h2>
       <p>目前正在寻找AI产品经理的机会，期待加入一个有技术深度、重视产品价值的团队。如果你的团队正在构建AI驱动的产品，欢迎联系我。</p>
       <div class="contact-row">
@@ -794,33 +796,12 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <!-- ════ Cat Agent ════ -->
 <div class="cat-agent" id="catAgent" role="button" aria-label="和数字分身聊天" tabindex="0">
   <div class="cat-bubble">和我聊聊~</div>
-  <svg class="cat-body" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M22 38 L30 12 L42 32 Z" fill="var(--gold)"/>
-    <path d="M78 38 L70 12 L58 32 Z" fill="var(--gold)"/>
-    <path d="M25 38 L32 16 L42 34 Z" fill="var(--surface-alt)" stroke="var(--gold)" stroke-width="1"/>
-    <path d="M75 38 L68 16 L58 34 Z" fill="var(--surface-alt)" stroke="var(--gold)" stroke-width="1"/>
-    <ellipse cx="50" cy="58" rx="30" ry="28" fill="var(--gold)"/>
-    <ellipse cx="50" cy="60" rx="27" ry="24" fill="var(--surface)"/>
-    <ellipse cx="50" cy="58" rx="28" ry="26" fill="var(--gold)" opacity="0.9"/>
-    <ellipse cx="40" cy="52" rx="5" ry="5.5" fill="var(--surface)"/>
-    <ellipse cx="60" cy="52" rx="5" ry="5.5" fill="var(--surface)"/>
-    <ellipse cx="41" cy="53" rx="2.8" ry="3.2" fill="#0A0D14"/>
-    <ellipse cx="61" cy="53" rx="2.8" ry="3.2" fill="#0A0D14"/>
-    <circle cx="39" cy="51" r="1.2" fill="white"/>
-    <circle cx="59" cy="51" r="1.2" fill="white"/>
-    <ellipse cx="50" cy="61" rx="2" ry="1.2" fill="#F28B82"/>
-    <path d="M47 63 Q50 67 53 63" stroke="#0A0D14" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <line x1="22" y1="56" x2="35" y2="58" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
-    <line x1="22" y1="60" x2="35" y2="60" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
-    <line x1="65" y1="58" x2="78" y2="56" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
-    <line x1="65" y1="60" x2="78" y2="60" stroke="var(--surface)" stroke-width="0.8" opacity="0.5"/>
-    <path d="M40 82 Q50 90 60 82" stroke="var(--gold)" stroke-width="3" fill="none" stroke-linecap="round"/>
-  </svg>
+  <svg class="persona-face" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg>
 </div>
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <div class="chat-avatar">🐱</div>
+    <div class="chat-avatar"><svg class="chat-persona" viewBox="1380 70 330 280" role="img" aria-label="小甜的个人 IP 形象"><image href="assets/ip-character-sheet.png" width="2048" height="1152"/></svg></div>
     <div class="chat-head-info">
       <div class="chat-head-name">小甜的数字分身</div>
       <div class="chat-head-status">AI Agent · 在线</div>
@@ -830,10 +811,10 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     </button>
   </div>
   <div class="chat-msgs" id="chatMsgs">
-    <div class="chat-msg bot">你好~ 我是小甜的数字分身 🐱 想了解我的项目经验、技能或者聊聊 AI 产品？随便问！</div>
+    <div class="chat-msg bot">你好~ 我是小甜的数字分身 想了解我的项目经验、技能或者聊聊 AI 产品？随便问！</div>
   </div>
   <div class="chat-input-bar">
-    <input class="chat-input" id="chatInput" type="text" placeholder="输入消息..." autocomplete="off">
+    <input class="chat-input" id="chatInput" aria-label="向小甜的数字分身发送消息" type="text" placeholder="输入消息..." autocomplete="off">
     <button class="chat-send" id="chatSend">发送</button>
   </div>
 </div>
@@ -851,11 +832,6 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
   var nav = document.getElementById('nav');
   var menuBtn = document.getElementById('menuBtn');
   var navLinks = document.getElementById('navLinks');
-  var canvas = document.getElementById('hero-cv');
-  var ctx = canvas.getContext('2d');
-  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dots = [], raf;
-
   // Device toggle: only for PC users to preview mobile layout
   var deviceBtn = document.getElementById('deviceBtn');
   var isRealMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -866,7 +842,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     deviceBtn.addEventListener('click', function(){
       var isMobile = root.classList.toggle('mobile-sim');
       try { localStorage.setItem('device-view', isMobile ? 'mobile' : 'pc'); } catch(e){}
-      setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 100);
+
     });
   }
 
@@ -878,7 +854,7 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     var next = isDark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch(e){}
-    requestAnimationFrame(draw);
+
   });
 
   var ticking = false;
@@ -899,66 +875,6 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
       menuBtn.querySelector('.ic-bars').hidden = false;
       menuBtn.querySelector('.ic-x').hidden = true;
     });
-  });
-
-  function colors(){
-    var s = getComputedStyle(root);
-    return {
-      g: s.getPropertyValue('--gold-rgb').trim() || '240,178,74',
-      b: s.getPropertyValue('--blue-rgb').trim() || '91,141,239'
-    };
-  }
-  function init(){
-    var hero = document.querySelector('.hero');
-    var dpr = window.devicePixelRatio || 1;
-    var w = hero.offsetWidth, h = hero.offsetHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    canvas.style.width = w+'px'; canvas.style.height = h+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    var n = Math.min(Math.floor(w*h/18000), 55);
-    dots = [];
-    for(var i=0;i<n;i++){
-      dots.push({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-0.5)*0.22, vy:(Math.random()-0.5)*0.22, r:Math.random()*1.2+0.7, t:Math.random()>0.5?'g':'b' });
-    }
-  }
-  function draw(){
-    var hero = document.querySelector('.hero');
-    var w = hero.offsetWidth, h = hero.offsetHeight;
-    var c = colors();
-    ctx.clearRect(0,0,w,h);
-    for(var i=0;i<dots.length;i++){
-      for(var j=i+1;j<dots.length;j++){
-        var dx=dots[i].x-dots[j].x, dy=dots[i].y-dots[j].y, d2=dx*dx+dy*dy;
-        if(d2<14400){
-          var a=(1-Math.sqrt(d2)/120)*0.07;
-          ctx.strokeStyle='rgba('+c.g+','+a+')';
-          ctx.lineWidth=0.5;
-          ctx.beginPath(); ctx.moveTo(dots[i].x,dots[i].y); ctx.lineTo(dots[j].x,dots[j].y); ctx.stroke();
-        }
-      }
-    }
-    for(var k=0;k<dots.length;k++){
-      var d=dots[k], cl=d.t==='g'?c.g:c.b;
-      ctx.fillStyle='rgba('+cl+',0.32)';
-      ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2); ctx.fill();
-    }
-  }
-  function tick(){
-    var hero = document.querySelector('.hero');
-    var w = hero.offsetWidth, h = hero.offsetHeight;
-    for(var i=0;i<dots.length;i++){
-      var d=dots[i]; d.x+=d.vx; d.y+=d.vy;
-      if(d.x<0||d.x>w) d.vx*=-1;
-      if(d.y<0||d.y>h) d.vy*=-1;
-    }
-    draw(); raf = requestAnimationFrame(tick);
-  }
-  init(); draw();
-  if(!noMotion) tick();
-  var rTimer;
-  window.addEventListener('resize', function(){
-    clearTimeout(rTimer);
-    rTimer = setTimeout(function(){ cancelAnimationFrame(raf); init(); draw(); if(!noMotion) tick(); }, 200);
   });
 
   // ── Chat Agent ──
@@ -1076,3 +992,8 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
   chatInput.addEventListener('keydown', function(e){ if(e.key==='Enter') sendMessage(); });
 })();
 </script>
+
+<script src="assets/hero.js" defer></script>
+<script src="assets/projects.js" defer></script>
+</body>
+</html>
