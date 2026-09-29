@@ -563,6 +563,8 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 <link rel="stylesheet" href="assets/projects.css?v=20260929">
 <link rel="stylesheet" href="assets/about.css?v=20260929">
 <link rel="stylesheet" href="assets/site-design.css?v=20260929">
+<link rel="stylesheet" href="assets/character-sections.css?v=2">
+<script src="assets/character-sections.js?v=2" defer></script>
 <link rel="preload" as="image" href="assets/ip-home-v2-poster.jpg">
 </head>
 <body>
@@ -658,9 +660,30 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
     <p class="section-label">工作经历 / EXPERIENCE</p>
     <h2 class="section-title" id="experience-title">从测试开发，到 AI 产品落地。</h2>
     <div class="experience-grid">
-      <div class="experience-entry" data-career="fde">
+      <div class="experience-entry has-work-video" data-career="testing">
+        <figure class="work-scene" aria-label="小甜进行软件测试的工作动画">
+          <video id="testing-video" data-work-video loop muted playsinline preload="none" poster="assets/testing-work-poster.jpg" data-src="assets/testing-work.mp4" aria-label="软件测试工作状态动画"></video>
+          <button class="work-playback" type="button" aria-label="播放工作动画">播放动画</button>
+        </figure>
+        <article class="exp-item" aria-labelledby="career-testing">
+          <div class="career-meta"><span class="career-step">01 / 技术积累</span><span>2024.07 — 2026.03</span></div>
+          <h3 class="career-title" id="career-testing">测试开发</h3>
+          <p class="career-company">帆软软件<span>测试开发工程师</span></p>
+          <ul class="career-points">
+            <li><strong>质量保障</strong><p>编写功能、接口和回归测试用例，保障产品质量。</p></li>
+            <li><strong>缺陷闭环</strong><p>使用 Apipost、Postman、Jira，完成缺陷复现、跟踪与关闭。</p></li>
+            <li><strong>客户沟通</strong><p>对接客户澄清问题，及时反馈处理进度。</p></li>
+            <li><strong>研发协同</strong><p>将外部问题转为可复现信息，协同研发定位与处理。</p></li>
+          </ul>
+        </article>
+      </div>
+      <div class="experience-entry has-work-video" data-career="fde">
+        <figure class="work-scene" aria-label="小甜进行 AI 产品落地的工作动画">
+          <video id="fde-video" data-work-video loop muted playsinline preload="none" poster="assets/fde-work-poster.jpg" data-src="assets/fde-work.mp4" aria-label="FDE 工作状态动画"></video>
+          <button class="work-playback" type="button" aria-label="播放 FDE 工作动画">播放动画</button>
+        </figure>
         <article class="exp-item" aria-labelledby="career-fde">
-          <div class="career-meta"><span class="career-step">01 / 现在</span><span>2026.03 — 至今</span></div>
+          <div class="career-meta"><span class="career-step">02 / 现在</span><span>2026.03 — 至今</span></div>
           <h3 class="career-title" id="career-fde">AI 产品落地</h3>
           <p class="career-company">帆软软件<span>FDE</span></p>
           <ul class="career-points">
@@ -670,21 +693,6 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
             <li><strong>经验沉淀</strong><p>输出产品改进建议与可复用行业方案，内外部累计分享 <em>10+ 场</em>。</p></li>
           </ul>
         </article>
-        <figure class="experience-media" hidden data-video-slot="fde" aria-label="AI 产品落地工作视频"></figure>
-      </div>
-      <div class="experience-entry" data-career="testing">
-        <article class="exp-item" aria-labelledby="career-testing">
-          <div class="career-meta"><span class="career-step">02 / 技术积累</span><span>2024.07 — 2026.03</span></div>
-          <h3 class="career-title" id="career-testing">测试开发</h3>
-          <p class="career-company">帆软软件<span>测试开发工程师</span></p>
-          <ul class="career-points">
-            <li><strong>质量保障</strong><p>编写与维护功能、接口和回归测试用例，支持产品质量验证。</p></li>
-            <li><strong>缺陷闭环</strong><p>使用 Apipost、Postman、Jira，完成缺陷复现、跟踪与关闭。</p></li>
-            <li><strong>客户沟通</strong><p>直接对接客户澄清问题与反馈进度，理解真实业务中的使用问题。</p></li>
-            <li><strong>研发协同</strong><p>将外部问题整理为可复现信息，协调研发定位与处理。</p></li>
-          </ul>
-        </article>
-        <figure class="experience-media" hidden data-video-slot="testing" aria-label="测试开发工作视频"></figure>
       </div>
     </div>
   </div>
@@ -766,26 +774,18 @@ html.mobile-sim .hero-cta .btn { width: 100%; text-align: center; }
 </section>
 
 <!-- ════ Contact ════ -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <svg class="contact-ip" viewBox="1595 850 185 235" role="img" aria-label="小甜的个人 IP 形象"><image data-ip-src="assets/ip-character-sheet.png" width="2048" height="1152"/></svg><p class="section-label">联系我</p>
-      <h2 class="section-title">聊聊AI产品的下一步</h2>
-      <p>目前正在寻找AI产品经理的机会，期待加入一个有技术深度、重视产品价值的团队。如果你的团队正在构建AI驱动的产品，欢迎联系我。</p>
-      <div class="contact-row">
-        <a class="c-item" href="mailto:18098028372@163.com">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><polyline points="1,3 8,9 15,3"/></svg>
-          <span>18098028372@163.com</span>
-        </a>
-        <span class="c-item">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7l-3 2v-2H4a2 2 0 0 1-2-2V4z"/></svg>
-          <span>微信: 18098028372</span>
-        </span>
-        <span class="c-item">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 14s-5.5-3.5-5.5-7.5C2.5 3.5 5 2 8 2s5.5 1.5 5.5 4.5S8 14 8 14z"/><circle cx="8" cy="6.5" r="1.5"/></svg>
-          <span>无锡</span>
-        </span>
+<section class="section contact-finale" id="contact" aria-labelledby="contact-title">
+  <div class="container contact-stage">
+    <figure class="contact-character"><img src="assets/contact-character.png" width="1024" height="1536" loading="lazy" decoding="async" alt="小甜的个人 IP 形象，指向右侧联系方式"></figure>
+    <div class="contact-message">
+      <h2 id="contact-title">聊聊 AI 产品的下一步</h2>
+      <p>目前正在寻找 AI 产品经理的机会，期待加入一个有技术深度、重视产品价值的团队。<br>如果你的团队正在构建 AI 驱动的产品，欢迎联系我。</p>
+      <div class="contact-actions">
+        <a class="contact-pill contact-email" href="mailto:18098028372@163.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 6 8 7 8-7"/></svg><span>18098028372@163.com</span></a>
+        <button class="contact-pill contact-wechat" type="button" data-copy="18098028372" aria-label="复制微信号 18098028372"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 3v-3a2 2 0 0 1-2-2V6a2 2 0 0 1 3-2Z"/></svg><span>微信：18098028372</span></button>
+        <span class="contact-pill contact-location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>无锡</span></span>
       </div>
+      <p class="contact-feedback" role="status" aria-live="polite"></p>
     </div>
   </div>
 </section>

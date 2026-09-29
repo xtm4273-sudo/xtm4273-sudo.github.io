@@ -1,0 +1,79 @@
+/* Work video above the testing card; two aligned cards stay within one desktop screen. */
+#experience { overflow:clip; padding-block:28px; }
+#experience .section-title { margin-bottom:16px; }
+.experience-entry[data-career="testing"] { --career-accent:var(--gold); }
+.experience-entry[data-career="fde"] { --career-accent:var(--blue); }
+.experience-grid { --work-media-height:clamp(144px,20svh,210px); }
+.experience-entry { grid-template-rows:var(--work-media-height) 1fr; }
+.experience-entry .exp-item { grid-row:2; }
+.work-scene { grid-row:1; position:relative; margin:0; height:var(--work-media-height); min-width:0; }
+.work-scene video { display:block; width:auto; max-width:100%; height:100%; aspect-ratio:16/9; object-fit:contain; margin:0 auto;
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 50%,rgba(0,0,0,.92) 68%,transparent 100%);
+  mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 50%,rgba(0,0,0,.92) 68%,transparent 100%);
+}
+.work-playback { position:absolute; right:16px; bottom:12px; min-height:36px; border:1px solid var(--border); border-radius:18px; padding:6px 14px; background:var(--ground); color:var(--text); font:12px var(--fb); cursor:pointer; white-space:nowrap; }
+.work-playback:hover { color:var(--text-strong); border-color:var(--gold); }
+@media(max-width:900px) {
+  #experience { padding-block:48px; }
+  .experience-grid { --work-media-height:180px; }
+  .experience-entry:not(.has-work-video) { grid-template-rows:1fr; }
+  .experience-entry:not(.has-work-video) .exp-item { grid-row:1; }
+  .work-playback { min-height:44px; bottom:6px; right:0; }
+}
+html.mobile-sim .experience-grid { --work-media-height:180px; }
+html.mobile-sim .experience-entry:not(.has-work-video) { grid-template-rows:1fr; }
+html.mobile-sim .experience-entry:not(.has-work-video) .exp-item { grid-row:1; }
+/* Contact: a full-height character and restrained gold/blue contact halos. */
+#contact { padding:24px 0 0; min-height:calc(100svh - 150px); display:flex; align-items:flex-end; overflow:hidden; }
+#contact>.contact-stage { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.65fr); align-items:center; gap:48px; width:100%; max-width:1440px; }
+.contact-character { margin:0; align-self:end; position:relative; }
+.contact-character img { display:block; width:calc(100% + 96px); margin-left:-48px; max-width:none; height:min(78svh,820px); object-fit:contain; object-position:center bottom; }
+.contact-message { padding-block:64px; }
+#contact h2 { font-family:var(--fb); font-size:clamp(30px,3.4vw,48px); font-weight:600; letter-spacing:-.035em; line-height:1.4; margin-bottom:28px; }
+.contact-message>p { font-size:17px; line-height:1.95; color:var(--text); max-width:48em; }
+.contact-actions { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-top:36px; }
+.contact-pill { --halo:145,196,255; position:relative; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; margin:0; padding:12px 18px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font:14px/1.5 var(--fb); text-decoration:none; }
+button.contact-pill,a.contact-pill { cursor:pointer; transition:border-color .25s,color .25s; }
+.contact-pill svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.contact-email { --halo:216,184,131; border-color:rgba(var(--halo),.6); }
+.contact-email::before,.contact-wechat::before { content:''; position:absolute; inset:-2px; z-index:-1; border-radius:inherit; box-shadow:0 0 22px 4px rgba(var(--halo),.2),0 0 50px 4px rgba(var(--halo),.06); opacity:.45; pointer-events:none; }
+.contact-email::after,.contact-wechat::after { content:''; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 18px rgba(var(--halo),.08); pointer-events:none; }
+.contact-pill:is(a,button):hover,.contact-pill:focus-visible { border-color:rgb(var(--halo)); color:var(--text-strong); }
+.contact-pill:is(a,button):hover::before,.contact-pill:focus-visible::before { opacity:1; }
+.contact-pill:active { transform:translateY(1px); }
+.contact-location { background:transparent; }
+.contact-message .contact-feedback { min-height:26px; margin:12px 0 0; font-size:13px; color:var(--gold); }
+@media(prefers-reduced-motion:no-preference) {
+  .contact-finale.is-visible .contact-email::before,.contact-finale.is-visible .contact-wechat::before { animation:contact-halo 4s ease-in-out infinite alternate; }
+  .contact-finale.is-visible .contact-wechat::before { animation-delay:-2s; }
+  .contact-finale .contact-pill:is(:hover,:focus-visible)::before { animation-play-state:paused; opacity:1; }
+}
+@keyframes contact-halo { from { opacity:.35; } to { opacity:.9; } }
+@media(max-width:1100px) {
+  #contact>.contact-stage { gap:24px; grid-template-columns:.85fr 1.5fr; }
+  .contact-pill { font-size:13px; padding:12px 14px; }
+}
+@media(max-width:900px) {
+  #contact>.contact-stage { grid-template-columns:1fr; gap:0; }
+  .contact-character { grid-row:2; }
+  .contact-character img { height:440px; width:100%; margin-left:0; }
+  .contact-message { padding:24px 0 16px; }
+}
+@media(max-width:540px) {
+  .contact-actions { align-items:stretch; gap:14px; margin-top:28px; }
+  .contact-email,.contact-wechat { width:100%; justify-content:flex-start; padding-inline:20px; }
+  .contact-message>p { font-size:16px; }
+  #contact h2 { font-size:30px; }
+  .contact-character img { height:380px; }
+}
+html.mobile-sim #contact>.contact-stage { grid-template-columns:1fr; }
+html.mobile-sim .contact-character { grid-row:2; }
+html.mobile-sim .contact-character img { height:380px; }
+html.mobile-sim .contact-email,html.mobile-sim .contact-wechat { width:100%; justify-content:flex-start; }
+
+@media(min-width:901px) and (max-height:800px) {
+  #experience { padding-block:20px; }
+  .experience-grid { --work-media-height:clamp(96px,calc(100svh - 632px),140px); }
+  .career-points li { min-height:44px; }
+  .career-points { gap:12px; }
+}
