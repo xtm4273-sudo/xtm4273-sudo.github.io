@@ -11,14 +11,11 @@
   -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 50%,rgba(0,0,0,.92) 68%,transparent 100%);
   mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 50%,rgba(0,0,0,.92) 68%,transparent 100%);
 }
-.work-playback { position:absolute; right:16px; bottom:12px; min-height:36px; border:1px solid var(--border); border-radius:18px; padding:6px 14px; background:var(--ground); color:var(--text); font:12px var(--fb); cursor:pointer; white-space:nowrap; }
-.work-playback:hover { color:var(--text-strong); border-color:var(--gold); }
 @media(max-width:900px) {
   #experience { padding-block:48px; }
   .experience-grid { --work-media-height:180px; }
   .experience-entry:not(.has-work-video) { grid-template-rows:1fr; }
   .experience-entry:not(.has-work-video) .exp-item { grid-row:1; }
-  .work-playback { min-height:44px; bottom:6px; right:0; }
 }
 html.mobile-sim .experience-grid { --work-media-height:180px; }
 html.mobile-sim .experience-entry:not(.has-work-video) { grid-template-rows:1fr; }
